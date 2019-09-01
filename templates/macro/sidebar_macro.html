@@ -1,0 +1,40 @@
+{% macro sidebar(active="")-%}
+  <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+      {% if active == "dashboard" %}
+      <li class="nav-item active">
+      {% else %}
+      <li class="nav-item">
+      {% endif %}
+        <a class="nav-link" href="/">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      {% if active == "account" %}
+      <li class="nav-item dropdown active">
+      {% else %}
+      <li class="nav-item dropdown">
+      {% endif %}
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-user-circle"></i>
+          <span>Account</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          {% if not session['name'] %}
+          <a class="dropdown-item" href="/login">Login</a>
+          <a class="dropdown-item" href="/register">Register</a>
+          {% else %}
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          {% endif %}
+        </div>
+      </li>
+      {% if session['name'] %}
+      <li class="nav-item">
+        <a class="nav-link" href="/file">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>My File</span></a>
+      </li>
+      {% endif %}
+    </ul>
+{%- endmacro %}
