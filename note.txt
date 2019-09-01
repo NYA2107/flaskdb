@@ -1,0 +1,12 @@
+init Project :
+- Create venv
+	MAC: python3 -m venv venv
+	WIN : py -3 -m venv venv
+- Install all dependencies
+	MAC/WIN : pip install -r requirements.txt
+- Activate venv
+	MAC : . venv/bin/activate
+	WIN : venv\Scripts\activate
+
+generate dependencies list
+	MAC/WIN : pip freeze > requirements.txt
